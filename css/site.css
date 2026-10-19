@@ -1,0 +1,230 @@
+:root {
+  --paper: #f2efe8;
+  --ink: #171614;
+  --ink-2: #57534b;
+  --veil: rgba(242, 239, 232, 0.88);
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --gutter: clamp(16px, 3vw, 40px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+  display: block;
+}
+
+#track { position: relative; height: 2700vh; pointer-events: none; }
+.walk2 #track { height: 2100vh; }
+
+.mark {
+  position: fixed;
+  top: var(--gutter);
+  left: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+  z-index: 3;
+}
+.mark__name { display: flex; align-items: flex-end; gap: 6px; font-weight: 600; letter-spacing: 0.14em; font-size: 13px; }
+.mark__sig { display: block; height: 26px; width: auto; }
+.mark__no { font-family: var(--mono); font-weight: 500; letter-spacing: 0.06em; font-size: 12px; line-height: 1; padding-bottom: 3px; }
+.mark__sub { font-family: var(--mono); font-size: 11px; color: var(--ink-2); }
+
+.rail {
+  position: fixed;
+  right: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: min(46vh, 360px);
+  background: rgba(23, 22, 20, 0.16);
+  z-index: 3;
+}
+.rail__fill { width: 100%; height: 0%; background: var(--ink); }
+
+.captions {
+  position: fixed;
+  left: var(--gutter);
+  bottom: var(--gutter);
+  width: min(380px, calc(100vw - 2 * var(--gutter)));
+  z-index: 3;
+  pointer-events: none;
+}
+.cap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 14px 16px 15px;
+  background: var(--veil);
+  border-left: 2px solid var(--ink);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.cap.is-on { opacity: 1; transform: none; }
+.cap p { margin: 0; }
+.cap__n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 6px !important; }
+.cap__t { font-size: 15px; line-height: 1.45; }
+
+.lang {
+  position: fixed;
+  top: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  gap: 2px;
+  z-index: 4;
+}
+.lang button {
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--ink-2);
+  background: var(--veil);
+  border: 1px solid rgba(23, 22, 20, 0.18);
+  padding: 7px 9px;
+  min-width: 40px;
+  min-height: 32px;
+  cursor: pointer;
+}
+.lang button[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.lang button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* the link between the walk and the photographs, beside the language switch */
+.toplink {
+  display: inline-flex; align-items: center;
+  font: 500 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  padding: 7px 10px; min-height: 32px; box-sizing: border-box; margin-right: 6px;
+  border: 1px solid rgba(23, 22, 20, 0.18); background: var(--veil);
+}
+.toplink::after { content: "\2197"; margin-left: 6px; }
+.toplink:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 640px) { .toplink { padding: 7px 8px; margin-right: 4px; letter-spacing: 0.06em; } }
+@media (max-width: 480px) { .toplink--wide { display: none; } }
+
+/* Platform, 1988-89: the four shows as a timeline (archive mode, act 2) */
+.timeline {
+  position: fixed;
+  top: var(--gutter);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(620px, calc(100vw - 2 * var(--gutter) - 200px));
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.timeline.is-on { opacity: 1; }
+.timeline[hidden] { display: none; }
+.timeline__t { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); text-align: center; }
+.timeline ol {
+  list-style: none; margin: 0; padding: 10px 0 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(23, 22, 20, 0.25);
+}
+.timeline li { position: relative; padding: 6px 4px 0; text-align: center; color: var(--ink-2); opacity: 0.55; transition: opacity 0.4s ease, color 0.4s ease; }
+.timeline li::before {
+  content: ""; position: absolute; top: -15px; left: 50%; width: 9px; height: 9px; margin-left: -5px;
+  border-radius: 50%; border: 1px solid var(--ink); background: var(--paper);
+}
+.timeline li.is-past { opacity: 0.85; }
+.timeline li.is-past::before { background: var(--ink-2); border-color: var(--ink-2); }
+.timeline li.is-now { opacity: 1; color: var(--ink); }
+.timeline li.is-now::before { background: var(--ink); transform: scale(1.25); }
+.timeline__d { display: block; font: 500 11px/1.3 var(--mono); letter-spacing: 0.04em; }
+.timeline__n { display: block; font-size: 12px; line-height: 1.3; margin-top: 2px; }
+.cap[hidden] { display: none; }
+
+.fallback {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  padding: var(--gutter);
+  background: var(--paper);
+  z-index: 20;
+  text-align: center;
+}
+.fallback[hidden] { display: none; }
+.fallback img { max-width: min(1200px, 100%); height: auto; }
+.fallback p { margin: 0; font-size: 15px; color: var(--ink-2); }
+.no-webgl #track, .no-webgl .captions, .no-webgl .rail, .no-webgl .hint { display: none; }
+
+.hint {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--gutter) + 8px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--gutter));
+  box-sizing: border-box;
+  padding: 12px 18px 12px 14px;
+  background: var(--veil);
+  border: 1px solid rgba(23, 22, 20, 0.18);
+  color: var(--ink);
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.hint__icon { width: 20px; height: 30px; flex: none; }
+.hint__icon--touch, .is-touch .hint__icon--mouse { display: none; }
+.is-touch .hint__icon--touch { display: block; }
+.hint__wheel { animation: wheel 1.6s ease-in-out infinite; }
+.hint__finger { animation: swipe 1.8s ease-in-out infinite; }
+.hint__text { display: flex; flex-direction: column; gap: 3px; }
+.hint__t { font: 600 14px/1.25 var(--sans); }
+.hint__s { font: 400 11.5px/1.35 var(--mono); color: var(--ink-2); }
+@keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(7px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+@keyframes swipe { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 80% { transform: translateY(-16px); opacity: 1; } 100% { transform: translateY(-16px); opacity: 0; } }
+/* the opening caption sits bottom-left on wide screens: the guide moves up when they would meet */
+@media (max-width: 1100px) { .hint { bottom: auto; top: 64%; } }
+
+.loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  z-index: 10;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  transition: opacity 0.6s ease;
+}
+.loader.is-done { opacity: 0; pointer-events: none; }
+
+@media (max-width: 640px) {
+  .timeline { top: calc(var(--gutter) + 44px); left: var(--gutter); right: var(--gutter); width: auto; transform: none; }
+  .timeline__n { display: none; }
+  .cap { padding: 11px 13px 12px; }
+  .cap__t { font-size: 13.5px; line-height: 1.4; }
+  .rail { height: 26vh; top: auto; bottom: calc(var(--gutter) + 120px); transform: none; }
+  .mark__sub { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap, .hint, .loader { transition: none; }
+  .hint__wheel, .hint__finger { animation: none; }
+}
+
+/* capture mode: no scrollbar, no transitions, no language switch */
+.is-capture #track { height: 100vh; }
+.is-capture .lang { display: none; }
+.no-hud .mark, .no-hud .captions, .no-hud .rail, .no-hud .hint, .no-hud .timeline { display: none; }
+.is-capture .cap { transition: none; }
+.is-capture .hint { display: none; }

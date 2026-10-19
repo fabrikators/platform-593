@@ -1,0 +1,12 @@
+# Hussein Madi's works and posters stay private until the estate gives permission;
+# remove this line to publish them (then ?archive shows them)
+assets/archive
+
+# recordings, frames and stills are local only (hundreds of MB)
+out
+tools
+deploy/*.md
+README.md
+.DS_Store
+**/.DS_Store
+.claude

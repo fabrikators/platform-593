@@ -1,0 +1,12 @@
+{
+ "note": "Details for spaces.html. A value left null is simply not shown. Text values take both languages: {\"en\": \"...\", \"fr\": \"...\"}. fabrikaUrl adds a 'Visit Fabrika' link. contact.email receives the messages (the form opens a pre-filled email); contact.whatsapp is digits only with the country code, e.g. \"9613000000\".",
+ "address": null,
+ "mapUrl": null,
+ "fabrikaUrl": null,
+ "contact": {
+  "name": null,
+  "email": null,
+  "phone": null,
+  "whatsapp": null
+ }
+}

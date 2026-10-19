@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Platform 593 — the second walk: the big room, the kitchen, the corridor</title>
+  <meta name="description" content="Platform 593, Achrafieh, Beirut. A second walk through the model: from the plan into the big room, through the hall to the kitchen, along the corridor and out onto the pergola terrace.">
+  <meta name="theme-color" content="#f2efe8">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Platform 593 — the second walk">
+  <meta property="og:description" content="From the floor plan into the big room, the kitchen and the corridor to the pergola terrace, and back to the plan.">
+  <meta property="og:image" content="https://fabrikators.github.io/platform-593/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" hreflang="en" href="?lang=en">
+  <link rel="alternate" hreflang="fr" href="?lang=fr">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23f2efe8%27/%3E%3Cpath d=%27M7 25V7h18v18%27 fill=%27none%27 stroke=%27%23171614%27 stroke-width=%273%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css" integrity="sha384-pAFowDtEJGvoq8dGiFmgKkO1h5cvbHkCysvXumyjfJBsi8qJwG429whEp2xanR+c" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="walk2">
+  <canvas id="scene" data-w2-aria="canvas" aria-label="Platform 593: from the floor plan into the big room, the kitchen and the corridor to the pergola terrace, then back to the plan"></canvas>
+
+  <header class="mark">
+    <span class="mark__name"><img class="mark__sig" src="assets/brand/signature.png" alt="Platform" width="1320" height="347"><span class="mark__no">593</span></span>
+    <span class="mark__sub" data-w2="markSub">Achrafieh, Beirut · the second walk</span>
+  </header>
+
+  <nav class="lang" data-i18n-aria="langLabel" aria-label="Language">
+    <a class="toplink" href="index.html" data-link="walk1" data-i18n="walk1Link">Walk 1</a>
+    <button type="button" data-lang="en" lang="en">EN</button>
+    <button type="button" data-lang="fr" lang="fr">FR</button>
+  </nav>
+
+  <aside class="rail" aria-hidden="true">
+    <div class="rail__fill"></div>
+  </aside>
+
+  <section class="captions" aria-live="polite">
+    <article class="cap" data-cap="0"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="1"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="2"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="3"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="4"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="5"><p class="cap__n"></p><p class="cap__t"></p></article>
+    <article class="cap" data-cap="6"><p class="cap__n"></p><p class="cap__t"></p></article>
+  </section>
+
+  <div class="hint" role="note">
+    <svg class="hint__icon hint__icon--mouse" viewBox="0 0 24 36" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="33" rx="10.5" fill="none" stroke="currentColor" stroke-width="1.5"/><line class="hint__wheel" x1="12" y1="8" x2="12" y2="13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg class="hint__icon hint__icon--touch" viewBox="0 0 24 36" aria-hidden="true"><path d="M12 33V7M6 13l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle class="hint__finger" cx="12" cy="28" r="4" fill="currentColor"/></svg>
+    <span class="hint__text"><span class="hint__t" data-i18n="hint">Scroll to walk through</span><span class="hint__s" data-i18n="hintHow">Mouse wheel, two fingers on the trackpad, or the arrow keys</span></span>
+  </div>
+  <div class="loader"><span data-i18n="loader">Drawing the plan</span></div>
+
+  <div class="fallback" hidden>
+    <img src="assets/og.jpg" alt="Platform 593, first-floor plan" width="1200" height="630">
+    <p data-i18n="fallback">This walk needs WebGL, which this browser does not offer. Here is the plan instead.</p>
+  </div>
+  <noscript>
+    <div class="fallback">
+      <img src="assets/og.jpg" alt="Platform 593, first-floor plan" width="1200" height="630">
+      <p>This walk needs JavaScript. Here is the plan instead. — Cette promenade a besoin de JavaScript. Voici le plan.</p>
+    </div>
+  </noscript>
+
+  <main id="track"></main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
+  <script type="module" src="js/walk2.js"></script>
+</body>
+</html>

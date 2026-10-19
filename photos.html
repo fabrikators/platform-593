@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Platform 593 — photographs</title>
+  <meta name="description" content="Platform 593, Achrafieh, Beirut: the 2026 photographs placed on the plan, each one compared with the model from the same spot.">
+  <meta name="theme-color" content="#f2efe8">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Platform 593 — photographs">
+  <meta property="og:image" content="https://fabrikators.github.io/platform-593/assets/og.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23f2efe8%27/%3E%3Cpath d=%27M7 25V7h18v18%27 fill=%27none%27 stroke=%27%23171614%27 stroke-width=%273%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/photos.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="photos-page">
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <header class="mark">
+    <span class="mark__name"><img class="mark__sig" src="assets/brand/signature.png" alt="Platform" width="1320" height="347"><span class="mark__no">593</span></span>
+    <span class="mark__sub" data-p="heading">Photographs, 2026</span>
+  </header>
+
+  <nav class="lang" data-i18n-aria="langLabel" aria-label="Language">
+    <a class="toplink" href="index.html" data-p="walk">The walk</a>
+    <button type="button" data-lang="en" lang="en">EN</button>
+    <button type="button" data-lang="fr" lang="fr">FR</button>
+  </nav>
+
+  <div class="markers" role="list"></div>
+
+  <p class="photos-hint" data-p="hint">Choose a camera on the plan to compare the photograph with the model from the same spot.</p>
+
+  <section class="viewer" role="dialog" aria-modal="true" hidden>
+    <div class="viewer__box">
+      <div class="viewer__model"></div>
+      <img class="viewer__photo" alt="">
+      <div class="viewer__split" aria-hidden="true"></div>
+      <span class="viewer__tag viewer__tag--photo" data-p="photo">Photograph, 2026</span>
+      <span class="viewer__tag viewer__tag--model"></span>
+      <input class="viewer__range" type="range" min="0" max="100" value="50" step="1" data-p-aria="slider" aria-label="Slide between the photograph and the model">
+    </div>
+    <div class="viewer__bar">
+      <button type="button" class="vbtn" data-act="prev" data-p-aria="prev" aria-label="Previous photograph">←</button>
+      <div class="viewer__title"><strong class="viewer__name"></strong><span class="viewer__n"></span></div>
+      <div class="viewer__mode" role="group">
+        <button type="button" class="vbtn" data-act="model" data-p="model">Model</button>
+        <button type="button" class="vbtn" data-act="ink" data-p="drawing">Drawing</button>
+      </div>
+      <button type="button" class="vbtn" data-act="next" data-p-aria="next" aria-label="Next photograph">→</button>
+      <button type="button" class="vbtn vbtn--close" data-act="close" data-p-aria="close" aria-label="Back to the plan">×</button>
+    </div>
+    <p class="viewer__approx" hidden></p>
+    <div class="viewer__place" hidden>
+      <p class="viewer__help" data-p="placeHelp"></p>
+      <code class="viewer__pose"></code>
+      <button type="button" class="vbtn" data-act="copy" data-p="copy">Copy positions</button>
+    </div>
+  </section>
+
+  <div class="loader"><span data-i18n="loader">Drawing the plan</span></div>
+  <div class="fallback" hidden>
+    <img src="assets/og.jpg" alt="Platform 593, first-floor plan" width="1200" height="630">
+    <p data-i18n="fallback">This page needs WebGL, which this browser does not offer.</p>
+  </div>
+
+  <script type="module" src="js/photos.js"></script>
+</body>
+</html>

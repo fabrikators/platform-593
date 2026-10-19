@@ -1,0 +1,9 @@
+# Hussein Madi's works and posters stay private until the estate gives permission
+assets/archive/
+# recordings, frames and stills (hundreds of MB)
+out/
+.DS_Store
+**/.DS_Store
+__pycache__/
+*.pyc
+node_modules/
